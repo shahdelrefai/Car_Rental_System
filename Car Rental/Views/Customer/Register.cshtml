@@ -1,0 +1,22 @@
+﻿<h2>Customer Registration</h2>
+
+<form method="post" asp-action="TryRegister">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required />
+
+    <label for="phoneNum">Phone Number:</label>
+    <input type="text" id="phoneNum" name="phoneNum" required />
+
+    <button type="submit">Register</button>
+</form>
+
+@if (ViewData["Message"] != null)
+{
+    <div>@ViewData["Message"]</div>
+}

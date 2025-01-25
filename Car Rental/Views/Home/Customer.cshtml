@@ -1,0 +1,11 @@
+﻿@{
+    ViewData["Title"] = "Customer Actions";
+}
+
+<h2>Customer Actions</h2>
+
+<div>
+    <button onclick="window.location.href='@Url.Action("Login", "Customer")'">Login</button>
+    <button onclick="window.location.href='@Url.Action("Register", "Customer")'">Register</button>
+    <button onclick="window.location.href='@Url.Action("Reserve", "Customer")'">Reserve Car</button>
+</div>

@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Search Cars";
+
+}
+@model List<Car>
+
+<h2>Search Cars</h2>
+
+<form method="post" asp-action="TrySearchCars">
+    <div>
+        <label for="model">Model</label>
+        <input type="text" id="model" name="model" value=@null />
+    </div>
+    <div>
+        <label for="year">Year</label>
+        <input type="number" id="year" name="year" value=@null/>
+    </div>
+    <div>
+        <label for="status">Availability</label>
+        <select id="status" name="status" value=@null>
+            <option value="">Select Availability</option>
+            <option value="0">Available</option>
+            <option value="1">Unavailable</option>
+			<option value="-1">Out of service</option>
+        </select>
+    </div>
+    <div>
+        <label for="customer">Customer Id</label>
+        <input type="number" id="customer" name="customer" value=@null />
+    </div>
+    <button type="submit">Search</button>
+</form>
+
+@if (Model != null)
+{
+    <h3>Search Results</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Plate ID</th>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Status</th>
+                <th>Office ID</th>
+                <th>Customer ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var car in Model)
+            {
+                <tr>
+                    <td>@car.PlateId</td>
+                    <td>@car.Model</td>
+                    <td>@car.Year</td>
+                    <td>@(car.Status == 0 ? "Available" : car.Status==1? "Unavailable": "Out of Service")</td>
+                    <td>@car.OfficeId</td>
+                    @if(@car.CustomerId != null)
+                    {
+                        <td>@car.CustomerId</td>
+                    }
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No cars found based on your search criteria.</p>
+}
+
+@if(ViewData["Message"] != null)
+{
+<div>@ViewData["Message"]</div>
+}

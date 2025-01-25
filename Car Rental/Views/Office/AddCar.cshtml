@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Add Car";
+}
+
+<h2>Add Car</h2>
+
+<form method="post" asp-action="TryAddCar">
+    <div>
+        <label for="PlateId">Plate ID</label>
+        <input type="text" id="PlateId" name="PlateId" required />
+    </div>
+    <div>
+        <label for="Model">Model</label>
+        <input type="text" id="Model" name="Model" required />
+    </div>
+    <div>
+        <label for="Year">Year</label>
+        <input type="number" id="Year" name="Year" required />
+    </div>
+    <div>
+        <label for="Status">Status</label>
+        <input type="number" id="Status" name="Status" required />
+    </div>
+    <div>
+        <label for="OfficeId">Office ID</label>
+        <input type="number" id="OfficeId" name="OfficeId" required />
+    </div>
+    <button type="submit">Add Car</button>
+</form>
+
+@if (ViewData["Message"] != null)
+{
+    <div>@ViewData["Message"]</div>
+}
